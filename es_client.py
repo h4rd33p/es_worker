@@ -1,9 +1,9 @@
 from elasticsearch import Elasticsearch
 
 class es_client:
-    """This class connects to the elastic search"""
+    """This class connects to the elasticsearch server"""
     def __init__(self):
-        self.__ELASTIC_PASSWORD = "<password>"
+        self.__ELASTIC_PASSWORD = "<PASSWORD>"
         self.__es_host="https://localhost:9200"
         self.__es_certificate="http_ca.crt"
         self.__basic_auth=("elastic", self.__ELASTIC_PASSWORD)

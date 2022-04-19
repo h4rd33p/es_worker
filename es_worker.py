@@ -1,7 +1,3 @@
-from elasticsearch import Elasticsearch
-import datetime
-import random
-import pandas as pd
 import pyinputplus as pyip
 
 from es_client import es_client
@@ -39,7 +35,6 @@ while 'yes' in choices:
         res = client.search( index='trade-demo', query={'match_all': {}}, size=10000, track_total_hits=True )
         for doc in res['hits']['hits']:
                 try:
-                    #print (doc['_id'], doc['_source']['trade_details']['price'])
                     doc_id=doc['_id']
                     record_value=doc['_source']['trade_details']['price']
                     print (doc_id,record_value)
@@ -58,13 +53,7 @@ while 'yes' in choices:
                         print("Error updating:",e)
                 except Exception as e:
                     print ("Error:", e)
-                
-                
-        
-        
-        
-        #es_update.es_update(client, record_name=record_to_update, record_value=record_operation)
-    
+                    
     elif 'show' in choices:
         
         show_by= pyip.inputMenu( ['All', 'single','containing'], numbered=True)
@@ -88,20 +77,13 @@ while 'yes' in choices:
             show_by_containing_record=pyip.inputStr(prompt="\n Enter record name:")
             show_by_containing_record_value=pyip.inputStr(prompt="\n Enter record value:")
             
-            
             res = client.search(index='trade-demo', query= {'match' : {show_by_containing_record: show_by_containing_record_value } }, size=10000, track_total_hits=True )
-
-            #res = client.search( index='trade-demo', query= { 'nested': { 'trade_details': {'price':{} } } })
             
             for doc in res['hits']['hits']:
                 try:
                     print ( doc['_source'])
                 except Exception as e:
-                    print ("Error:", e)                
-            
-            
-    
-    
+                    print ("Error:", e)   
 
-    choices= pyip.inputYesNo(prompt="More seacrhes(y/n)?")
+    choices= pyip.inputYesNo(prompt="Continue (y/n)?")
     print ("Good bye!")
