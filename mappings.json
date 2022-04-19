@@ -1,0 +1,34 @@
+{
+  "properties": {
+    "trade_id": {
+      "type": "keyword"
+    },
+    "trader_name": {
+      "type": "keyword"
+    },
+    "instrument_id": {
+      "type": "keyword"
+    },
+    "instrument_name": {
+      "type": "keyword"
+    },
+    "timestamps": {
+      "properties": {
+        "trading_datetime": {
+          "type": "date"
+        }
+      }
+    },
+    "trade_details": {
+      "properties": {
+        "quantity": {
+          "type": "integer"
+        },
+        "price": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
+
