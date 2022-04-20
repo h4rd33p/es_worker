@@ -1,5 +1,5 @@
 
-
+#Note: Prior use this file, “elasticsearch.yml” need to be updated to add path for snapshots repository as path.repo: ["path/to/folder"]
 import arrow
 
 def es_backup(client):
